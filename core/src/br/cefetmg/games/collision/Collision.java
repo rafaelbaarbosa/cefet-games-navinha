@@ -32,6 +32,16 @@ public class Collision {
      * @return true se há colisão ou false, do contrário.
      */
     public static final boolean rectsOverlap(Rectangle r1, Rectangle r2) {
-        return false;
+        Vector2 rect1 = new Vector2(r1.x, r1.y);
+        Vector2 rect2 = new Vector2(r2.x, r2.y);
+        float rect1YMax = rect1.y + r1.height;
+        float rect1XMax = rect1.x + r1.width;
+        float rect2YMax = rect2.y + r2.height;
+        float rect2XMax = rect2.x + r2.width;
+        
+        return rect1YMax >= rect2.y &&
+               rect1.y <= rect2YMax &&
+               rect1XMax >= rect2.x &&
+               rect1.x <= rect2XMax;
     }
 }
